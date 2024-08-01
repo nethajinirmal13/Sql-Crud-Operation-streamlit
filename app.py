@@ -1,29 +1,30 @@
 import streamlit as st
 import mysql.connector
 from mysql.connector import Error
-
+from tabulate import tabulate
 
 def create_connection():
     connection = None
     try:
-        connection = mysql.connector.connect(
-            host = "gateway01.ap-southeast-1.prod.aws.tidbcloud.com",
-            port = 4000,
-            user = "2NWb96BauSzhCfv.root",
-            password = "SaYdGDVFMx9te0U7",
-            database = "userdetails",
-        )
-        if connection.is_connected():
+       connection = mysql.connector.connect(
+            host=st.secrets["mysql"]["host"],
+            port=st.secrets["mysql"]["port"],
+            user=st.secrets["mysql"]["user"],
+            password=st.secrets["mysql"]["password"],
+            database=st.secrets["mysql"]["database"],
+            ssl_ca=st.secrets["mysql"]["ssl_ca"]
+       )     
+       if connection.is_connected():
             st.success("Connection to MySQL DB successful")
     except Error as e:
         st.error(f"The error '{e}' occurred")
     return connection
 
 
-def create_user(connection, name, age):
+def create_user(connection,user_id, name, age):
     cursor = connection.cursor()
-    query = "INSERT INTO users (name, age) VALUES (%s, %s)"
-    cursor.execute(query, (name, age))
+    query = "INSERT INTO users (id,name, age) VALUES (%s,%s, %s)"
+    cursor.execute(query, (user_id,name, age))
     connection.commit()
     
     
@@ -61,19 +62,23 @@ def main():
 
     # Create a new user
     st.subheader("Create User")
+    user_id= st.number_input("Id",min_value=0,max_value=1001)
     name = st.text_input("Name")
     age = st.number_input("Age", min_value=0)
     if st.button("Create"):
-        create_user(connection, name, age)
+        create_user(connection, user_id,name, age)
         st.success("User created successfully")
 
     # Read all users
     st.subheader("Read Users")
     if st.button("Read"):
         users = read_users(connection)
-        for user in users:
-            st.write(f"ID: {user[0]}, Name: {user[1]}, Age: {user[2]}")
-
+        # for user in users:
+        #     st.write(f"ID: {user[0]}, Name: {user[1]}, Age: {user[2]}")
+        headers = ["ID", "Name", "Age"]
+        table = tabulate(users, headers, tablefmt="psql")
+        st.text(table)
+        
     # Update a user
     st.subheader("Update User")
     user_id = st.number_input("User ID to update", min_value=1)
