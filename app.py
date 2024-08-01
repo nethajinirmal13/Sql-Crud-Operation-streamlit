@@ -7,12 +7,11 @@ def create_connection():
     connection = None
     try:
        connection = mysql.connector.connect(
-            host=st.secrets["mysql"]["host"],
-            port=st.secrets["mysql"]["port"],
-            user=st.secrets["mysql"]["user"],
-            password=st.secrets["mysql"]["password"],
-            database=st.secrets["mysql"]["database"],
-            ssl_ca=st.secrets["mysql"]["ssl_ca"]
+            host="gateway01.ap-southeast-1.prod.aws.tidbcloud.com",
+            port= 4000,
+            user="2NWb96BauSzhCfv.root",
+            password="glYD5rr41K6XQFlI",
+            database="userdetails",
        )     
        if connection.is_connected():
             st.success("Connection to MySQL DB successful")
