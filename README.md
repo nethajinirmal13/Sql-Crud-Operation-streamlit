@@ -12,23 +12,19 @@
 <h1><code>Streamlit run app.py</code></h1>
 
 
-![image](https://github.com/user-attachments/assets/408db32d-8770-4416-81b9-9e453f01eb4f)
+![image](https://github.com/user-attachments/assets/deb335e0-d726-415a-9622-264a364f2a2a)
 
 
-
-![image](https://github.com/user-attachments/assets/b2a17dc0-9b00-4122-a279-6d040bd94ef8)
-
+![image](https://github.com/user-attachments/assets/b51e3f64-acc5-41ad-85ef-86590b25475c)
 
 
-![image](https://github.com/user-attachments/assets/54dd6fd4-04e4-49a3-bf78-084b06f3325e)
+![image](https://github.com/user-attachments/assets/b109b406-0041-4f8a-baca-3022933f1f67)
+
+![image](https://github.com/user-attachments/assets/4e2a5482-da0a-4e6a-93d4-c47b8b35e72c)
 
 
-![image](https://github.com/user-attachments/assets/52a6833e-5eb9-42cd-a720-a717b6c53980)
+![image](https://github.com/user-attachments/assets/a0a7efbe-a261-445e-ba12-de3469d337ee)
 
+![image](https://github.com/user-attachments/assets/bbd420c8-16e9-4fd1-9b29-032c7f96863f)
 
-![image](https://github.com/user-attachments/assets/bd013b48-e3b4-4275-ad3f-f66f183eb984)
-
-
-
-![image](https://github.com/user-attachments/assets/44a24752-1f2b-4e96-8bfe-26c312c63899)
 
